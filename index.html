@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<head>
+    <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <style>
+        @use "@material/button";
+        .mdc-button {
+            --mdc-theme-primary: #FEDBD0;
+            --mdc-theme-on-primary: #442C2E;
+            @include button.ink-color(#84565E);
+        }
+    </style>
+</head>
+
+<body>
+    <button class="mdc-button mdc-button--icon-trailing">
+    <span class="mdc-button__ripple"></span>
+    <span class="mdc-button__label">Button</span>
+    <i class="material-icons mdc-button__icon" aria-hidden="true">favorite</i>
+  </button>
+    <script>
+        mdc.ripple.MDCRipple.attachTo(document.querySelector('.foo-button'));
+    </script>
+</body>

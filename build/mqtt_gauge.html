@@ -1,0 +1,21 @@
+<html><head>
+    <script src="https://blocklypro.webduino.io/dist/lib/webduino-all-0.4.20.min.js?rev=4426739c00d85325cb2d3d701fa50666"></script>
+    <script src="https://blocklypro.webduino.io/node_modules/webduino-module-mqtt/mqttClient.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    
+    
+
+</head>
+
+<body>
+    <wa-mqtt sub="qq1" set="g1.value"></wa-mqtt>
+    <google-gauge id="g1" name="光度計" value="30"></google-gauge>
+
+    <wa-mqtt sub="qq2" set="g2.value"></wa-mqtt>
+    <google-gauge id="g2" name="溫度計" value="30"></google-gauge>
+    <!--
+    <div id='m2'>Hello</div>
+-->
+
+
+<script type="module" src="./google-gauge.js"></script><script type="module" src="./wa-mqtt.js"></script></body></html>

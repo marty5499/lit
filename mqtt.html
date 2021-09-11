@@ -1,0 +1,19 @@
+<html>
+
+<head>
+    <script src="https://blocklypro.webduino.io/dist/lib/webduino-all-0.4.20.min.js?rev=4426739c00d85325cb2d3d701fa50666"></script>
+    <script src="https://blocklypro.webduino.io/node_modules/webduino-module-mqtt/mqttClient.min.js"></script>
+    <script type="module" src="./wa-mqtt.js"></script>
+</head>
+
+<body>
+    <wa-mqtt sub='qq1' set="m1.innerHTML"></wa-mqtt>
+    <wa-mqtt sub='qq2' set="m2.innerHTML"></wa-mqtt>
+    <div id='m1'>Hello</div>
+    <div id='m2'>Hello</div>
+    <!--
+    <div id='m2'>Hello</div>
+-->
+</body>
+
+</html>
