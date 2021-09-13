@@ -9,20 +9,20 @@ export class wa_mqtt extends LitElement {
             get: { type: String}
         }
     }
-
     constructor() {
         super();
+        wa_mqtt.Server = {
+            server: 'wss://mqtt1.webduino.io/mqtt',
+            userName: 'webduino',
+            password: 'webduino'
+          }
     }
-
     async firstUpdated() {
         var self = this;
         if (!wa_mqtt.mClient) {
             wa_mqtt.isConnect = false;
             wa_mqtt.mClient = new webduino.module.mqttClient();
-            await wa_mqtt.mClient.connect({
-                server: 'wss://mqtt1.webduino.io/mqtt',
-                userName: 'webduino',password: 'webduino'
-              });
+            await wa_mqtt.mClient.connect(wa_mqtt.Server);
             console.log("mqttClient connect ok");
             wa_mqtt.isConnect = true;
         }
@@ -40,7 +40,12 @@ export class wa_mqtt extends LitElement {
                 ele.addEventListener('input',function(evt){
                     wa_mqtt.mClient.send({topic: self.pub, message: ""+parseInt(this.value)})
                 })
-            }            
+            }
+            else if(attr=='checked' && ele.tagName=='MWC-SWITCH'){
+                ele.addEventListener('input',function(evt){
+                    wa_mqtt.mClient.send({topic: self.pub, message: ""+(this.checked!=true)})
+                })
+            }
         }
         if (self.sub) {
             var id = setInterval(async function () {
@@ -60,14 +65,8 @@ export class wa_mqtt extends LitElement {
             }, 100);
         }
     }
-
-    updated() {
-
-    }
-
     render() {
         return html`<div></div>`;
     }
 }
-
 customElements.define('wa-mqtt', wa_mqtt);
