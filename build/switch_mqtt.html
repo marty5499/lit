@@ -4,68 +4,11 @@
     <script src="https://blocklypro.webduino.io/dist/lib/webduino-all-0.4.20.min.js?rev=4426739c00d85325cb2d3d701fa50666">
     </script>
     <script src="https://blocklypro.webduino.io/node_modules/webduino-module-mqtt/mqttClient.min.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Material+Icons&amp;display=block" rel="stylesheet">
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    
-
     
     
-    <style>
-        body {
-            margin: 0;
-            font-family: Roboto, sans-serif;
-            transition: opacity ease-in 0.2s;
-        }
-        a {
-          text-decoration: none;
-        }
-        [slot="title"] {
-          font-family: "Roboto Mono", monospace;
-          -webkit-font-smoothing: antialiased;
-          font-size: 1.25rem;
-          line-height: 2rem;
-          letter-spacing: 0.4px;
-        }
-        .white {
-          --mdc-theme-primary: white;
-          --mdc-button-outline-color: white;
-          color: white;
-        }     
-        .container {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
-  grid-auto-columns: 1fr;
-  gap: 0px 0px;
-  grid-auto-flow: row;
-  grid-template-areas:
-    ". sw ."
-    ". g ."
-    ". . .";
-}
-
-.g { grid-area: g; }
-
-.sw { grid-area: sw; }
-
-    </style>
 </head>
 
 <body>
-    <mwc-top-app-bar-fixed>
-        <a href="../" slot="navigationIcon">
-            <mwc-icon-button class="white" icon="home"></mwc-icon-button>
-        </a>
-        <span slot="title">IoT 儀錶板</span>
-    </mwc-top-app-bar-fixed>
-    <br><br>
-    <div class="container">
-        <div class="g"><google-gauge name="光度計" value="30"></google-gauge></div>
-        <div class="sw"> <mwc-switch id="sw"></mwc-switch>
-        </div>
-      </div>
-    <wa-mqtt sub="qq3" set="sw.checked"></wa-mqtt>
-   
-
-<script type="module" src="./google-gauge.js"></script><script type="module" src="./wa-mqtt.js"></script><script type="module" src="./inline-module-33cd45ead03636f51c21bb2a2b3644ee.js"></script></body></html>
+  <wa-mqtt get="gg1.checked" pub="zz123"></wa-mqtt>
+  <mwc-switch id="gg1"></mwc-switch> on/off
+<script type="module" src="./wa-mqtt.js"></script><script type="module" src="./inline-module-a0f8e7a0cba28e85de38dda6d7a82282.js"></script></body></html>
