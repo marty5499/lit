@@ -8,6 +8,8 @@
         "@material/mwc-icon-button-toggle": "^0.22.1",
         "@material/mwc-slider": "^0.22.1",
         "@material/mwc-switch": "^0.22.1",
+        "@material/mwc-tab": "^0.23.0",
+        "@material/mwc-tab-bar": "^0.23.0",
         "@material/mwc-top-app-bar-fixed": "^0.22.1",
         "@webcomponents/webcomponentsjs": "^2.6.0",
         "lit": "^2.0.0-rc.3"

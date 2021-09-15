@@ -1,0 +1,25 @@
+<!DOCTYPE html><html><head>
+    <meta charset="utf-8">
+    <title>App</title>
+    <script src="https://blocklypro.webduino.io/dist/lib/webduino-all-0.4.20.min.js?rev=4426739c00d85325cb2d3d701fa50666">
+    </script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Material+Icons&amp;display=block" rel="stylesheet">
+    <script src="https://blocklypro.webduino.io/node_modules/webduino-module-mqtt/mqttClient.min.js"></script>
+    
+    
+</head>
+
+<body>
+    <wa-mqtt></wa-mqtt>
+    <mwc-tab-bar id="tab">
+        <mwc-tab label="one" icon="camera" stacked="" isminwidthindicator=""></mwc-tab>
+        <mwc-tab label="two" icon="camera" stacked="" isminwidthindicator=""></mwc-tab>
+        <mwc-tab label="three" icon="camera" stacked="" isminwidthindicator=""></mwc-tab>
+    </mwc-tab-bar>
+<script>
+    tab.addEventListener('MDCTabBar:activated',function(e){
+        console.log(e.detail.index);
+    })
+</script>
+<script type="module" src="./wa-mqtt.js"></script><script type="module" src="./inline-module-aa8fd1e098d7ac004a0eda22fb0a129e.js"></script></body></html>
