@@ -1,18 +1,100 @@
 <!DOCTYPE html><html><head>
+    <meta charset="utf-8">
+    <title>App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <script src="https://blocklypro.webduino.io/dist/lib/webduino-all-0.4.20.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Material+Icons&amp;display=block" rel="stylesheet">
+    <link href="assets/index-c63aa06b.css" rel="stylesheet">
     <script src="https://blocklypro.webduino.io/node_modules/webduino-module-mqtt/mqttClient.min.js"></script>
     
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    
+    
+    
+    <style>
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: 1fr 4fr 1fr;
+            grid-auto-columns: 1fr;
+            gap: 0% 0%;
+            grid-auto-flow: row;
+            justify-content: center;
+            align-content: center;
+            justify-items: center;
+            align-items: center;
+            grid-template-areas:
+                "title title title"
+                "light light light"
+                "sw1 sw2 sw3";
+        }
+
+        .title {
+            grid-area: title;
+        }
+
+        .sw1 {
+            grid-area: sw1;
+        }
+
+        .sw2 {
+            grid-area: sw2;
+        }
+
+        .sw3 {
+            grid-area: sw3;
+        }
+
+        .light {
+            grid-area: light;
+        }
+    </style>
 </head>
 
 <body>
-    <h1 id="txt">0</h1>
-    <button id="btn">Click</button>
-    <wa-mqtt id="mqtt" sub="zzz" set="txt.innerHTML"></wa-mqtt>
-    <script>
-        var i=0;
-        btn.addEventListener('click',()=>{
-            mqtt.publish('zzz',++i+'');
-        })
-    </script>
+    <mwc-top-app-bar-fixed>
+        <a slot="navigationIcon">
+            <mwc-icon-button class="white" icon="home"></mwc-icon-button>
+        </a>
+        <span slot="title">IoT 儀錶板</span>
+    </mwc-top-app-bar-fixed>
 
-<script type="module" src="./wa-mqtt.js"></script></body></html>
+    <wa-mqtt></wa-mqtt>
+
+    <mwc-tab-bar id="tab">
+        <mwc-tab label="Office" icon="group_work"></mwc-tab>
+        <mwc-tab label="home" icon="home"></mwc-tab>
+        <mwc-tab label="other" icon="leaderboard"></mwc-tab>
+    </mwc-tab-bar>
+    <div class="tab-container">
+        <div class="container">
+            <div class="title">
+                <h1>智慧控制</h1>
+            </div>
+            <div class="light">
+                <google-gauge id="a" name="光度計" value="30" width="320"></google-gauge>
+            </div>
+            <div class="sw1">
+                <mwc-switch id="sw1"></mwc-switch> 彩燈
+            </div>
+            <div class="sw2">
+                <mwc-switch id="sw2"></mwc-switch> 警報
+            </div>
+            <div class="sw3">
+                <mwc-switch id="sw1"></mwc-switch> 電燈
+            </div>
+        </div>
+    </div>
+    <div class="tab-container">
+        <div class="container">
+            <google-gauge id="b" name="光度計2" value="50"></google-gauge>
+        </div>
+    </div>
+    <div class="tab-container">
+        <div class="container">
+            <google-gauge id="c" name="光度計3" value="20"></google-gauge>
+        </div>
+    </div>
+
+<script type="module" src="./wa-mqtt.js"></script><script type="module" src="./google-gauge.js"></script><script type="module" src="./mwc-tab-bar.js"></script><script type="module" src="./inline-module-431f9f75295a7f63ddbadf272aa810ad.js"></script></body></html>

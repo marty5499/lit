@@ -1,25 +1,93 @@
 <!DOCTYPE html><html><head>
     <meta charset="utf-8">
     <title>App</title>
-    <script src="https://blocklypro.webduino.io/dist/lib/webduino-all-0.4.20.min.js?rev=4426739c00d85325cb2d3d701fa50666">
-    </script>
+    <script src="https://blocklypro.webduino.io/dist/lib/webduino-all-0.4.20.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Material+Icons&amp;display=block" rel="stylesheet">
     <script src="https://blocklypro.webduino.io/node_modules/webduino-module-mqtt/mqttClient.min.js"></script>
     
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     
+    
+    
+    <style>
+        body {
+            margin: 0;
+            font-family: Roboto, sans-serif;
+            transition: opacity ease-in 0.2s;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        [slot="title"] {
+            font-family: "Roboto Mono", monospace;
+            -webkit-font-smoothing: antialiased;
+            font-size: 1.25rem;
+            line-height: 2rem;
+            letter-spacing: 0.4px;
+        }
+
+        .white {
+            --mdc-theme-primary: white;
+            --mdc-button-outline-color: white;
+            color: white;
+        }
+
+        mwc-switch {
+            --mdc-switch-selected-handle-color: teal;
+            --mdc-switch-selected-track-color: lightseagreen;
+            /* ... additional states (hover/focus/pressed) + state-layer element */
+            --mdc-switch-unselected-handle-color: goldenrod;
+            --mdc-switch-unselected-track-color: palegoldenrod;
+            --mdc-switch-unselected-icon-color: black;
+            /* ... additional states (hover/focus/pressed) + state-layer element */
+        }
+
+        .fancy2 {
+            color: #9fe079;
+            --mdc-icon-size: 32px;
+        }
+
+        mwc-icon-button-toggle {
+            --mdc-icon-size: 64px
+        }
+
+        .container {
+            padding: 20px;
+            display: none;
+        }
+
+        .container-active {
+            display: block;
+        }
+    </style>
 </head>
 
 <body>
+    <mwc-top-app-bar-fixed>
+        <a slot="navigationIcon">
+            <mwc-icon-button class="white" icon="home"></mwc-icon-button>
+        </a>
+        <span slot="title">IoT 儀錶板</span>
+    </mwc-top-app-bar-fixed>
+
     <wa-mqtt></wa-mqtt>
     <mwc-tab-bar id="tab">
-        <mwc-tab label="one" icon="camera" stacked="" isminwidthindicator=""></mwc-tab>
-        <mwc-tab label="two" icon="camera" stacked="" isminwidthindicator=""></mwc-tab>
-        <mwc-tab label="three" icon="camera" stacked="" isminwidthindicator=""></mwc-tab>
+        <mwc-tab label="one" icon="leaderboard"></mwc-tab>
+        <mwc-tab label="two" icon="subject"></mwc-tab>
+        <mwc-tab label="three" icon="group_work"></mwc-tab>
     </mwc-tab-bar>
-<script>
-    tab.addEventListener('MDCTabBar:activated',function(e){
-        console.log(e.detail.index);
-    })
-</script>
-<script type="module" src="./wa-mqtt.js"></script><script type="module" src="./inline-module-aa8fd1e098d7ac004a0eda22fb0a129e.js"></script></body></html>
+
+    <div class="container">
+        <google-gauge id="a" name="光度計" value="30"></google-gauge>
+    </div>
+    <div class="container">
+        <google-gauge id="b" name="光度計2" value="50"></google-gauge>
+    </div>
+    <div class="container">
+        <google-gauge id="c" name="光度計3" value="20"></google-gauge>
+    </div>
+
+<script type="module" src="./wa-mqtt.js"></script><script type="module" src="./google-gauge.js"></script><script type="module" src="./mwc-tab-bar.js"></script><script type="module" src="./inline-module-d617321e35d6b40e4cc8d13f5c68045e.js"></script></body></html>
