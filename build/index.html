@@ -7,6 +7,9 @@
     <link href="https://fonts.googleapis.com/css?family=Material+Icons&amp;display=block" rel="stylesheet">
     <link href="assets/index-c63aa06b.css" rel="stylesheet">
     <script src="https://blocklypro.webduino.io/node_modules/webduino-module-mqtt/mqttClient.min.js"></script>
+    <script src="https://webrtc.webduino.io/peerjs.min.js"></script>
+    <script src="https://webrtc.webduino.io/socket.io/socket.io.js"></script>
+    
     
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     
@@ -60,8 +63,6 @@
         <span slot="title">IoT 儀錶板</span>
     </mwc-top-app-bar-fixed>
 
-    <wa-mqtt></wa-mqtt>
-
     <mwc-tab-bar id="tab">
         <mwc-tab label="Office" icon="group_work"></mwc-tab>
         <mwc-tab label="home" icon="home"></mwc-tab>
@@ -73,22 +74,27 @@
                 <h1>智慧控制</h1>
             </div>
             <div class="light">
-                <google-gauge id="a" name="光度計" value="30" width="320"></google-gauge>
+                <wa-mqtt sub="gg" set="gg.value"></wa-mqtt>
+                <google-gauge id="gg" name="光度計" value="30" width="320"></google-gauge>
             </div>
             <div class="sw1">
+                <wa-mqtt pub="sw" get="sw1.checked"></wa-mqtt>
                 <mwc-switch id="sw1"></mwc-switch> 彩燈
             </div>
             <div class="sw2">
-                <mwc-switch id="sw2"></mwc-switch> 警報
+                <wa-mqtt pub="alarm" get="sw2.checked"></wa-mqtt>
+                <mwc-switch id="sw2"></mwc-switch> 音樂
             </div>
+                <wa-mqtt pub="light" get="sw3.checked"></wa-mqtt>
             <div class="sw3">
-                <mwc-switch id="sw1"></mwc-switch> 電燈
+                <mwc-switch id="sw3"></mwc-switch> 電燈
             </div>
         </div>
     </div>
     <div class="tab-container">
-        <div class="container">
-            <google-gauge id="b" name="光度計2" value="50"></google-gauge>
+        <button onclick="js:cc.show()">WebRTC</button>
+        <div class="container">            
+            <web-rtc id="cc"></web-rtc>
         </div>
     </div>
     <div class="tab-container">
@@ -97,4 +103,4 @@
         </div>
     </div>
 
-<script type="module" src="./google-gauge.js"></script><script type="module" src="./wa-mqtt.js"></script><script type="module" src="./mwc-tab-bar.js"></script><script type="module" src="./inline-module-431f9f75295a7f63ddbadf272aa810ad.js"></script></body></html>
+<script type="module" src="./google-gauge.js"></script><script type="module" src="./web-rtc.js"></script><script type="module" src="./wa-mqtt.js"></script><script type="module" src="./mwc-tab-bar.js"></script><script type="module" src="./inline-module-431f9f75295a7f63ddbadf272aa810ad.js"></script></body></html>
