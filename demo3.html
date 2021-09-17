@@ -1,20 +1,23 @@
-<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
 
 <head>
+    <!-- mqtt-js -->
     <script src="https://blocklypro.webduino.io/dist/lib/webduino-all-0.4.20.min.js"></script>
     <script src="https://blocklypro.webduino.io/node_modules/webduino-module-mqtt/mqttClient.min.js"></script>
-    <script type="module" src="./wa-mqtt.js"></script>
+    <script type="module" src="https://marty5499.github.io/lit/build/wa-mqtt.js"></script>
 </head>
 
 <body>
-<h1 id='txt'>0</h1>
-<button id='btn'>Click</button>
-<wa-mqtt id='mqtt' sub='zz123' set='txt.innerHTML'></wa-mqtt>
-<script>
-    var a = {
-        'exec':function(msg){
-            console.log(msg)
-        }
-    }
-</script>
+    <h1 id='txt'>0</h1>
+    <button id='btn'>Click</button>
+    <wa-mqtt id='mqtt' sub='wb5499/state' set='txt.innerHTML'></wa-mqtt>
+    <script>
+        var i = 0;
+        btn.addEventListener('click', () => {
+            mqtt.publish('wb5499/set', ++i % 2 == 0 ? "on" : "off");
+        })
+    </script>
 </body>
+
+</html>
