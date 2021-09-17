@@ -1,7 +1,8 @@
 <!DOCTYPE html><html><head>
+    <!-- mqtt-js -->
     <script src="https://blocklypro.webduino.io/dist/lib/webduino-all-0.4.20.min.js"></script>
     <script src="https://blocklypro.webduino.io/node_modules/webduino-module-mqtt/mqttClient.min.js"></script>
-    
+    <script type="module" src="https://marty5499.github.io/lit/build/wa-mqtt.js"></script>
 </head>
 
 <body>
@@ -11,7 +12,7 @@
 <script>
     var i=0;
     btn.addEventListener('click',()=>{
-        mqtt.publish('zzz',++i+'');
+        mqtt.publish('zzz',++i);
     })
 </script>
-<script type="module" src="./wa-mqtt.js"></script></body></html>
+</body></html>
