@@ -10,6 +10,9 @@
     <link href="https://fonts.googleapis.com/css?family=Material+Icons&display=block" rel="stylesheet">
     <link href="./index.css" rel="stylesheet">
     <script src="https://blocklypro.webduino.io/node_modules/webduino-module-mqtt/mqttClient.min.js"></script>
+    <script src="https://webrtc.webduino.io/peerjs.min.js"></script>
+    <script src="https://webrtc.webduino.io/socket.io/socket.io.js"></script>
+    <script type="module" src="./web-rtc.js"></script>
     <script type="module" src="./wa-mqtt.js"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="module" src="./google-gauge.js"></script>
@@ -99,7 +102,7 @@
     </div>
     <div class="tab-container">
         <div class="container">
-            <google-gauge id='b' name='光度計2' value='50'></google-gauge>
+            <web-rtc id='cc'></web-rtc>
         </div>
     </div>
     <div class="tab-container">
